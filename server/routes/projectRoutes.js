@@ -1,3 +1,4 @@
+// In routes/projectRoutes.js
 const express = require("express");
 const { 
   getUserProjects, 
@@ -11,14 +12,9 @@ const {
   searchProjects
 } = require("../controllers/projectController");
 
-// Authentication middleware (commented out for now)
-// const { protect } = require("../middlewares/auth"); 
-
-const upload = require('../middlewares/uploadMiddleware');
+// Correctly importing the optionalUpload middleware
+const optionalUpload = require('../middlewares/uploadMiddleware');
 const router = express.Router();
-
-// Apply the 'protect' middleware to all routes (commented out for now)
-// router.use(protect);
 
 // Search projects route (must come before /:id route)
 router.get("/search", searchProjects);
@@ -29,7 +25,9 @@ router.get("/stats", getProjectStats);
 // Routes for the collection of projects
 router.route("/")
   .get(getAllProjects)
-  .post(createProject); // No upload middleware for now
+  // FIX: Added optionalUpload middleware to the createProject route
+  // This allows a thumbnail to be optionally uploaded during creation.
+  .post(optionalUpload, createProject); 
 
 // Route to get user projects (alternative endpoint)
 router.route("/user")
@@ -38,7 +36,8 @@ router.route("/user")
 // Routes for a single project, identified by its ID
 router.route("/:id")
   .get(getProjectById)
-    .put(upload, updateProject) // Use upload middleware for thumbnail upload
+  // Use optionalUpload middleware for thumbnail upload on update
+  .put(optionalUpload, updateProject) 
   .delete(deleteProject);
 
 // Duplicate project route

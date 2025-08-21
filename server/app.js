@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 // --- 1. CORS Configuration ---
 // This must come before any routes are registered.
 app.use(cors({
-  origin: "https://matty-nine.vercel.app" || "http://localhost:5173",
+  origin: "https://matty-nine.vercel.app" || "http://localhost:5173" ,
   credentials: true,
 }));
 
