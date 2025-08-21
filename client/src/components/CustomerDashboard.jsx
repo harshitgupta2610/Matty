@@ -14,7 +14,7 @@ const CustomerComponent = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/projects/user", {
+        const { data } = await axios.get("https://matty-u3pp.onrender.com/api/projects/user", {
           withCredentials: true,
         });
         setProjects(data.projects || []);
@@ -33,7 +33,7 @@ const handleCreateNewProject = async () => {
   const toastId = toast.loading('Creating new project...');
   try {
     const { data } = await axios.post(
-      'http://localhost:5000/api/projects',
+      'https://matty-u3pp.onrender.com/api/projects',
       { name: 'New Untitled Project' },
       { withCredentials: true }
     );

@@ -13,7 +13,7 @@ const Login = () => {
   // In Login.js - Update the handleLogin function
 const handleLogin = async () => {
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/login', form);
+    const res = await axios.post('https://matty-u3pp.onrender.com/api/auth/login', form);
     
     // Store user data
     localStorage.setItem('token', res.data.token);

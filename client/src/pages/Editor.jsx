@@ -18,7 +18,7 @@ const Editor = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/projects/${projectId}`, {
+        const { data } = await axios.get(`https://matty-u3pp.onrender.com/api/projects/${projectId}`, {
           withCredentials: true,
         });
         setProjectName(data.name);
@@ -63,7 +63,7 @@ const Editor = () => {
     // 4. Send the update request
     const toastId = toast.loading('Saving project...');
     try {
-      await axios.put(`http://localhost:5000/api/projects/${projectId}`, formData, {
+      await axios.put(`https://matty-u3pp.onrender.com/api/projects/${projectId}`, formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' },
       });

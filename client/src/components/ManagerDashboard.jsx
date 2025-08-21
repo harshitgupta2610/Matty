@@ -22,7 +22,7 @@ const ManagerComponent = () => {
     const fetchCanvases = async () => {
       try {
         const res = await axios.get(
-          'http://localhost:5000/admin/canvases',
+          'https://matty-u3pp.onrender.com/admin/canvases',
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setCanvases(res.data);
@@ -51,7 +51,7 @@ const ManagerComponent = () => {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.patch(
-        `http://localhost:5000/admin/canvases/${id}/status`,
+        `https://matty-u3pp.onrender.com/admin/canvases/${id}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
