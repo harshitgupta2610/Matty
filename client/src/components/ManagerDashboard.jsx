@@ -22,7 +22,7 @@ const ManagerComponent = () => {
     const fetchCanvases = async () => {
       try {
         const res = await axios.get(
-          'https://localhost:5000/admin/canvases',
+          'http://localhost:5000/admin/canvases',
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setCanvases(res.data);
@@ -51,7 +51,7 @@ const ManagerComponent = () => {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.patch(
-        `https://localhost:5000/admin/canvases/${id}/status`,
+        `http://localhost:5000/admin/canvases/${id}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -19,7 +19,7 @@ const Register = () => {
   // Registration API handler
   const handleRegister = async () => {
     try {
-      await axios.post('https://customerservicefeedback.onrender.com/api/auth/register', form);
+      await axios.post('http://localhost:5000/api/auth/register', form);
       toast.success('Registered successfully! Redirecting to login...', {
         position: 'top-right',
         autoClose: 3000,
